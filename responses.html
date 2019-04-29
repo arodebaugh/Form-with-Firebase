@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple CSS Q3 Reflection with saving</title>
+        <!-- This meta tag make the text scale correctly on desktop AND mobile browsers. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- This link and 2 scripts load the Bootstrap CSS stylesheet -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Advanced CS Reflection</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span> 
+                </button>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a class="nav-link" href="responses.html">responses</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <br>
+
+        <div class="container-fluid">
+            <h3 style="text-align:center">History</h3>
+            <table class="table" id="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Knowledge</th>
+                    <th scope="col">Skills</th>
+                    <th scope="col">Different</th>
+                    <th scope="col">Accomplishment</th>
+                    <th scope="col">Improve</th>
+                    <th scope="col">Collaborate</th>
+                    <th scope="col">Feedback</th>
+                  </tr>
+                </thead>
+                <tbody id="history">
+                </tbody>
+            </table>
+        </div>
+        
+        <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD5GRaAwY0VahX4r56HvFo-COAzGBWvxUE",
+            authDomain: "advanced-compsci-example-1.firebaseapp.com",
+            databaseURL: "https://advanced-compsci-example-1.firebaseio.com",
+            projectId: "advanced-compsci-example-1",
+            storageBucket: "advanced-compsci-example-1.appspot.com",
+            messagingSenderId: "411754157893"
+        };
+        firebase.initializeApp(config);
+        </script>
+        <script src="responses.js"></script>
+    </body>
+</html>
