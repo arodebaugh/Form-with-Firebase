@@ -1,7 +1,8 @@
 var db = firebase.firestore();
 
 window.onload = function() {
-    db.collection("form").get().then((querySnapshot) => {
+    db.collection("form").onSnapshot(function(querySnapshot) {
+        document.getElementById('history').innerHTML = "";
         querySnapshot.forEach((doc) => {
             var tableRef = document.getElementById('table').getElementsByTagName('tbody')[0];
             var newRow = tableRef.insertRow(tableRef.rows.length);
@@ -20,7 +21,7 @@ window.onload = function() {
 
             console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
         });
-    });    
+    });
 };
 
 function deleteRow(id) {
