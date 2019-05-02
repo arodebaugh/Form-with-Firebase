@@ -22,6 +22,25 @@ window.onload = function() { // Runs code on load
     });    
 };
 
+String.prototype.addAt = function (index, character) {
+    return this.substr(0, index - 1) + character + this.substr(index-1 + character.length-1);
+}
+
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
+
 function grabFromLocalStorage() {
     // This takes the data from local storage and sets the textbox to the values.
     var data = JSON.parse(window.localStorage.getItem("data"));
@@ -60,6 +79,22 @@ function saveToLocalStorage(page) {
 
     // Place data in local storage.
     window.localStorage.setItem("data", JSON.stringify(data));
+}
+
+function checkPI() {
+    var piDiv = document.getElementById('pi');
+    getJSON('https://api.pi.delivery/v1/pi?numberOfDigits=' + (piDiv.value.length - 1),
+    function(err, data) {
+        if (err !== null) {
+            alert('Something went wrong: ' + err);
+        } else {
+            if (data.content.addAt(2, '.') === piDiv.value) {
+                alert(piDiv.value + " is correct!");
+            } else {
+                alert(piDiv.value + " is wrong!");
+            }
+        }
+    });
 }
 
 function saveToFirebase(page) {
